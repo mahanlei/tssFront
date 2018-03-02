@@ -1,0 +1,33 @@
+.el-header{
+  padding: 0px;
+}
+.el-main{
+  height: 600px;
+  background-color: rgb(245,245,245);
+  padding: 30px;
+}
+.el-footer{
+  height: 150px;
+  padding:0;
+  background-color: rgb(40,44,53)
+}
+
+.grid-content {
+  border-radius: 4px;
+  min-height: 29px;
+}
+.el-header h1{
+  font-weight: inherit;
+  font-size: 30px;
+  color: rgb(235,122,119);
+  text-align: left;
+  padding-left: 50px;
+  margin-top: 10px;
+;
+}
+#login{
+  font-size: 16px;
+  margin-top: 20px;
+  padding-left: 40px;
+
+}
