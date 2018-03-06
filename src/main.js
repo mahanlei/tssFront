@@ -8,10 +8,11 @@ import router from './router'
 import axios from 'axios'
 import VueAxios from 'vue-axios'
 import apiConfig from '../config/api.config'
-
+import utils from '../config/utils'
 Vue.use(ElementUI) ;// Vue全局使用
 Vue.use(VueRouter);
-Vue.use(VueAxios, axios)
+Vue.use(VueAxios, axios);
+Vue.prototype.$utils=utils;
 
 axios.defaults.baseURL = apiConfig.baseUrl;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';

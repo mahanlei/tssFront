@@ -1,6 +1,6 @@
 <template>
   <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2"  label-width="100px" class="demo-ruleForm">
-    <el-form-item id="item1">
+    <el-form-item class="item1">
       <span id="title">欢迎注册会员</span>
     </el-form-item>
     <el-form-item label="用户名" prop="member" >
@@ -25,7 +25,11 @@
       <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
       <el-button @click="resetForm('ruleForm2')">重置</el-button>
     </el-form-item>
+    <el-form-item class="item1">
+    <span id="warning" v-show="ok">{{message}}</span>
+    </el-form-item>
   </el-form>
+
 </template>
 
 <script>
@@ -73,14 +77,17 @@ name: "register",
         email:'',
         pass: '',
         checkPass: '',
-        age: ''
+        age: '',
+
       },
+      ok:false,
+      message:'',
       rules2: {
         pass: [
-          { validator: validatePass, trigger: 'blur' }
+          { required:true,validator: validatePass, trigger: 'blur' }
         ],
         checkPass: [
-          { validator: validatePass2, trigger: 'blur' }
+          { required:true,validator: validatePass2, trigger: 'blur' }
         ],
         age: [
           { validator: checkAge, trigger: 'blur' }
@@ -89,20 +96,76 @@ name: "register",
     };
   },
   methods: {
+
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      let self = this;
+      self.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!');
+          const url = 'register';
+
+          var params = new URLSearchParams();
+          var mid = self.ruleForm2.member;
+          var mail = self.ruleForm2.email;
+          var passw = self.ruleForm2.checkPass;
+          var age = self.ruleForm2.age;
+          params.append('mid', mid);
+          params.append('email', mail);
+          params.append('password', passw);
+          params.append('age', age);
+          self.$axios({
+            method: 'post',
+            url: url,
+            data: params,
+          }).then(function (response) {
+            console.log(response.data.msg);
+            if (response.data.code == 200) {//注册成功
+
+            } else {
+              console.log("失败");
+              self.ok = true;
+              self.message = response.data.msg;
+            }
+          }).catch(function (error) {
+            console.log(error);
+
+          });
         } else {
           console.log('error submit!!');
-          return false;
         }
       });
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
+    },
+    getParams() {
+      let self = this;
+      // 取到路由带过来的参数
+      console.log(self.$route.params.code);
+      let code = self.$route.params.code;
+      var params = new URLSearchParams();
+      params.append('code', code);
+      self.$axios({
+        method: 'post',
+        url: '/register/activeMember',
+        data: params,
+      }).then(function (response) {
+        console.log(response.data.msg);
+        if (response.data.code == 200) {//激活成功
+          self.$route.push('/');
+        } else {
+          console.log("激活失败");
+          alert("激活失败");
+        }
+      }).catch(function (error) {
+        console.log(error);
+
+      });
+    },
+    watch:{
+      '$route': 'getParams'
     }
-  }
+}
+
 
 }
 </script>

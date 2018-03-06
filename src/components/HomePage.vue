@@ -10,9 +10,18 @@
           <p id="login" v-on:click="dologin">登录|注册</p>
         </div>
         </el-col>
-        <el-col :span="2">
-          <div class="grid-content ">
-            <p id="myCenter" v-on:click="myCenter">{{$route.params.id}}</p>
+        <el-col :span="2" >
+          <div class="grid-content " style="font-size: 30px">
+            <el-dropdown @command="handleCommand">
+                <p id="myCenter" >{{$route.params.id}}</p>
+              <el-dropdown-menu slot="dropdown">
+                <el-dropdown-item command="myOrder">我的订单</el-dropdown-item>
+                <el-dropdown-item command="points">我的积分</el-dropdown-item>
+                <el-dropdown-item command="discountCoupon" >我的优惠券</el-dropdown-item>
+                <el-dropdown-item command="profile" divided>个人资料</el-dropdown-item>
+                <el-dropdown-item command="setting" >设置</el-dropdown-item>
+              </el-dropdown-menu>
+            </el-dropdown>
           </div>
         </el-col>
       </el-row>
@@ -72,6 +81,17 @@ export default {
     // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
     '$route': 'getParams'
   },
+handleCommand(command){
+      switch (command){
+        case "myOrder":
+        case "points":
+        case "discountCoupon":
+        case "profile":
+          this.$router.push('/login')
+        case "setting":
+
+      }
+}
   }
 }
 </script>

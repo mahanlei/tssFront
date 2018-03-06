@@ -23,7 +23,7 @@
       return {
         account: '',
         password: '',
-        ok:false,
+        ok:true,
         message:'',
       };
     },
@@ -33,7 +33,7 @@
         let self = this;
         var params = new URLSearchParams();
         var uid = this.account;
-        var passw = this.password
+        var passw = this.password;
         params.append('account', uid);
         params.append('password', passw);
         this.$axios({

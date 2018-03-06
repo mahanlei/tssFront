@@ -3,7 +3,7 @@
   color:rgb(235,122,119);
   margin-left: 70px;
 }
-#item1{
+.item1{
   margin-top: 5%;
   margin-bottom: 90px;
 }
@@ -22,4 +22,7 @@
   margin-left:32%;
   width:340px;
   /*display: inline-block;*/
+}
+#warning{
+  color: red;
 }
