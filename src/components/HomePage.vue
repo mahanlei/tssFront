@@ -2,12 +2,19 @@
   <el-container>
     <el-header >
       <el-row :gutter="20">
-        <el-col :span="16"><div class="grid-content ">
+        <el-col :span="19"><div class="grid-content ">
           <h1>TSS</h1>
         </div></el-col>
-        <el-col :span="8"><div class="grid-content ">
-          <p id="login" v-on:click="login">登录</p>
-        </div></el-col>
+        <el-col :span="3">
+          <div class="grid-content ">
+          <p id="login" v-on:click="dologin">登录|注册</p>
+        </div>
+        </el-col>
+        <el-col :span="2">
+          <div class="grid-content ">
+            <p id="myCenter" v-on:click="myCenter">{{$route.params.id}}</p>
+          </div>
+        </el-col>
       </el-row>
     </el-header>
     <el-main >
@@ -40,45 +47,35 @@ import ElMain from "element-ui/packages/main/src/main";
 import ElFooter from "element-ui/packages/footer/src/main";
 
 export default {
+  data(){
+    return{
+      myCenter:'',
+    }
+  },
   components: {
     ElFooter,
     ElMain},
   name: "home-page",
   methods: {
-    login: function (event) {
-this.$router.push('/login')
-    }
+    dologin: function (event) {
+      this.$router.push('/login')
+    },
+    getParams () {
+      let self=this;
+      // 取到路由带过来的参数
+      console.log(self.$route.params.id);
+      let routerParams = self.$route.params.id;
+      // 将数据放在当前组件的数据内
+      self.myCenter = routerParams
+    },
+  watch: {
+    // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
+    '$route': 'getParams'
+  },
   }
 }
 </script>
 
 <style scoped>
   @import "../assets/css/HomePage.css";
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 200px;
-    margin: 0;
-  }
-  .image {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
-  .el-carousel__item:nth-child(0) {
-    /*background-color: #99a9bf;*/
-  }
-
-  .el-carousel__item:nth-child(1) {
-    /*background-color: #475669;*/
-  }
-  .el-carousel__item:nth-child(2) {
-    /*background-color: #99a9bf;*/
-  }
-  .el-carousel__item:nth-child(3) {
-    /*background-color: #475669;*/
-  }
-
-
 </style>

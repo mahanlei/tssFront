@@ -2,49 +2,74 @@
   <el-row class="content">
     <el-col :xs="24" :sm="{span: 6,offset: 9}">
       <span class="title">
-       欢迎登录
+       欢迎登录TSS
       </span>
       <el-row>
-        <el-input
-          v-model="account"
-          placeholder="账号"
-          type="text">
-        </el-input>
-        <el-input
-          v-model="password"
-          placeholder="密码"
-          type="password">
-        </el-input>
-        <el-button type="primary">登录</el-button>
-        <el-button type="primary">注册</el-button>
+        <el-input v-model="account" placeholder="账号" clearable=""></el-input>
+        <el-input v-model="password" placeholder="密码" type="password"></el-input>
+        <el-button id="loginButton" type="primary" @click.native.prevent="handleLogin">登录</el-button>
+        <el-button id="registerButton" type="primary" v-on:click="handleRegister">注册</el-button>
+        <h4 id="warning" v-show="ok">{{message}}</h4>
       </el-row>
     </el-col>
   </el-row>
 </template>
 
 <script>
-export default {
-name: "login",
-  data () {
-    return {
-      account: '',
-      password: ''
-    };
+
+  export default {
+    name: "login",
+    data() {
+      return {
+        account: '',
+        password: '',
+        ok:false,
+        message:'',
+      };
+    },
+    methods: {
+      handleLogin: function () {
+        const url = 'login';
+        let self = this;
+        var params = new URLSearchParams();
+        var uid = this.account;
+        var passw = this.password
+        params.append('account', uid);
+        params.append('password', passw);
+        this.$axios({
+          method: 'post',
+          url: url,
+          data: params,
+        }).then(function (response) {
+          console.log(response.data.msg);
+          if (response.data.code == 200) {
+            console.log("成功登录");
+            self.$router.push({
+              name: "dhome",
+              params: {
+                id: uid
+              }
+            })
+          }else {
+            self.ok =true;
+            self.message=response.data.msg;
+
+          }
+        }).catch(function (error) {
+            console.log(error);
+
+          });
+      },
+      handleRegister:function (event) {
+        let self=this;
+        self.$router.push('/register');
+      },
+
+    }
   }
-}
 </script>
 
 <style scoped>
-  .el-row.content {
-    padding :16px
-  }
-            .title {
-              font-size :28px
-            }
-                        .el-input{
-                        margin :12px 0}
-  .el-button {
-    width: 100%;
-    margin-top: 12px
-  }
+  @import "../assets/css/Login.css";
+
 </style>

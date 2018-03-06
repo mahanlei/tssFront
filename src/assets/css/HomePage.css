@@ -1,5 +1,9 @@
-.el-header{
+.header.el-header{
   padding: 0px;
+  height: 65px;
+}
+.el-row{
+  height: 65px;
 }
 .el-main{
   height: 600px;
@@ -14,20 +18,52 @@
 
 .grid-content {
   border-radius: 4px;
-  min-height: 29px;
+  height: 45px;
 }
 .el-header h1{
   font-weight: inherit;
-  font-size: 30px;
+  font-size: 34px;
   color: rgb(235,122,119);
   text-align: left;
   padding-left: 50px;
   margin-top: 10px;
+  /*padding-top: 10px;*/
 ;
 }
 #login{
   font-size: 16px;
   margin-top: 20px;
-  padding-left: 40px;
+  padding-left: 0px;
 
+}
+#myCenter{
+  margin-top: 17px;
+  margin-bottom: 16px;
+  font-size: 20px;
+padding-left: 0px;
+}
+.el-carousel__item h3 {
+  color: #475669;
+  font-size: 14px;
+  opacity: 0.75;
+  line-height: 200px;
+  margin: 0;
+}
+.image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.el-carousel__item:nth-child(0) {
+  /*background-color: #99a9bf;*/
+}
+
+.el-carousel__item:nth-child(1) {
+  /*background-color: #475669;*/
+}
+.el-carousel__item:nth-child(2) {
+  /*background-color: #99a9bf;*/
+}
+.el-carousel__item:nth-child(3) {
+  /*background-color: #475669;*/
 }

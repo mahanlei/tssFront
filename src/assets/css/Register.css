@@ -1,0 +1,25 @@
+#title {
+  font-size: 25px;
+  color:rgb(235,122,119);
+  margin-left: 70px;
+}
+#item1{
+  margin-top: 5%;
+  margin-bottom: 90px;
+}
+
+.el-input{
+  width: 340px;
+}
+/*#el-form-item__label{*/
+  /*margin-left: 350px;*/
+/*}*/
+/*#el-form-item__content{*/
+  /*margin-left: 450px;*/
+/*}*/
+
+.el-form-item{
+  margin-left:32%;
+  width:340px;
+  /*display: inline-block;*/
+}

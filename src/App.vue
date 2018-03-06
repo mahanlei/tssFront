@@ -1,15 +1,14 @@
 <template>
   <div id="app">
     <!--<homePage></homePage>-->
-<!--<login></login>-->
-    <router-view/>
+    <!--<login></login>-->
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-
   import  homePage from'./components/HomePage'
-import login from './components/Login'
+  import login from './components/Login'
 export default {
   name: 'App',
   data(){
@@ -19,7 +18,7 @@ export default {
   },
   components: {
     homePage ,
-  login}
+    login}
 }
 
 </script>
