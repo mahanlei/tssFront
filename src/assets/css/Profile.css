@@ -2,21 +2,13 @@
   font-size: 25px;
   color:rgb(235,122,119);
   margin-left: 70px;
+  margin-top: 100px;
 }
-.item1{
-  margin-top: 5%;
-  margin-bottom: 90px;
-}
-
 .el-input{
   width: 340px;
 }
-
 .el-form-item{
   margin-left:32%;
-  width:340px;
+  width:435px;
   /*display: inline-block;*/
-}
-#warning{
-  color: red;
 }

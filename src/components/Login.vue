@@ -41,7 +41,7 @@
           url: url,
           data: params,
         }).then(function (response) {
-          console.log(response.data.msg);
+          // console.log(response.data.msg);
           if (response.data.code == 200) {
             console.log("成功登录");
             self.$router.push({

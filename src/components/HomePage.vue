@@ -75,19 +75,26 @@ export default {
       console.log(self.$route.params.id);
       let routerParams = self.$route.params.id;
       // 将数据放在当前组件的数据内
-      self.myCenter = routerParams
+      self.myCenter = routerParams;
     },
   watch: {
     // 监测路由变化,只要变化了就调用获取路由参数方法将数据存储本组件即可
     '$route': 'getParams'
   },
 handleCommand(command){
+      let self=this;
       switch (command){
         case "myOrder":
         case "points":
         case "discountCoupon":
         case "profile":
-          this.$router.push('/login')
+
+          this.$router.push({
+            name:"profile",
+            params:{
+              mid:self.$route.params.id
+            }
+          })
         case "setting":
 
       }

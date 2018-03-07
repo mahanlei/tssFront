@@ -102,7 +102,6 @@ name: "register",
       self.$refs[formName].validate((valid) => {
         if (valid) {
           const url = 'register';
-
           var params = new URLSearchParams();
           var mid = self.ruleForm2.member;
           var mail = self.ruleForm2.email;

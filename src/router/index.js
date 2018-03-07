@@ -32,7 +32,7 @@ export default new Router({
       redirect: '/' // 输入其他不存在的地址自动跳回首页
     },
     {
-      path: '/:id',
+      path: '/home/:id',
       name: 'dhome',
       component: homePage
     },
@@ -42,7 +42,7 @@ export default new Router({
       component: registerActive
     },
     {
-      path:'/profile',
+      path:'/profile/:mid',
       name:'profile',
       component:profile,
     }
