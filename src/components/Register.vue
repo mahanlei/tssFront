@@ -4,7 +4,7 @@
       <span id="title">欢迎注册会员</span>
     </el-form-item>
     <el-form-item label="用户名" prop="member" >
-      <el-input type="text" v-model="ruleForm2.member" placeholder="不超过11位" auto-complete="off"></el-input>
+      <el-input type="text" v-model="ruleForm2.member" placeholder="以字母开头，字母数字组成的不超过10位" auto-complete="off"></el-input>
     </el-form-item>
     <el-form-item label="邮箱" prop="email":rules="[
       { required: true, message: '请输入邮箱地址', trigger: 'blur' },
@@ -36,6 +36,15 @@
 export default {
 name: "register",
   data() {
+  var checkName=(rule,value,callback)=>{
+var nameExp=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{2,10}$/;
+    if(!value){
+      return callback(new Error('用户名不能为空'));
+    }else if(!nameExp.test(value)){
+      return callback(new Error('用户名由2-10位字符，由字母a-z及数字组成'));
+    }
+    callback();
+  }
     var checkAge = (rule, value, callback) => {
       if (!value) {
         return callback(new Error('年龄不能为空'));
@@ -83,6 +92,9 @@ name: "register",
       ok:false,
       message:'',
       rules2: {
+        member:[
+          {validator:checkName,tigger:'blur'}
+        ],
         pass: [
           { required:true,validator: validatePass, trigger: 'blur' }
         ],

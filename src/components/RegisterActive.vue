@@ -1,5 +1,5 @@
 <template>
-<el-button v-on:click="active" style="margin-top: 30%">激活</el-button>
+<el-button v-on:click="active" style="margin-top: 30%">验证邮箱</el-button>
 </template>
 
 <script>
