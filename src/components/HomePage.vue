@@ -52,8 +52,8 @@
 <script>
 import ElMain from "element-ui/packages/main/src/main";
 import ElFooter from "element-ui/packages/footer/src/main";
-import showCard from "../components/showCard"
 export default {
+  name: "home-page",
   data(){
     return{
       myCenter:'',
@@ -73,11 +73,10 @@ export default {
     }
   },
   components: {
-showCard,
     ElMain,
     ElFooter
   },
-  name: "home-page",
+
   created(){
     this.fetchData();
   },
