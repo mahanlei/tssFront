@@ -7,6 +7,7 @@ import register from '../components/Register'
 import registerActive from '../components/RegisterActive'
 import profile from '../components/Profile'
 import showInfo from '../components/ShowInfo'
+import discountCoupon from '../components/DiscountCoupon'
 Vue.use(Router);
 
 export default new Router({
@@ -51,7 +52,13 @@ export default new Router({
       path:'/showInfo/:mid/:showId',
       name:'showInfo',
       component:showInfo,
+    },
+    {
+      path:'/discountCoupon/:mid',
+      name:'discountCoupon',
+      component:discountCoupon
     }
+
   ]
 
 })

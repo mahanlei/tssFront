@@ -65,7 +65,7 @@ export default {
 
       ],
       cards:[ ],
-   loading:false,
+   loading:true,
       cardItem:{
 
       }
@@ -99,6 +99,13 @@ handleCommand(command){
       switch (command){
         case "myOrder":
         case "discountCoupon":
+          this.$router.push({
+            name:"discountCoupon",
+            params:{
+              mid:self.$route.params.id
+            }
+          })
+              break;
         case "profile":
           this.$router.push({
             name:"profile",
@@ -106,14 +113,13 @@ handleCommand(command){
               mid:self.$route.params.id
             }
           })
-
+break;
         case "setting":
 break;
       }
 },
 fetchData(){
   let self=this;
-  self.loading = true;
   var url = 'show/showList';
   self.$axios({
     method:'post',

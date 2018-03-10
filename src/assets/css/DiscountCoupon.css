@@ -1,0 +1,54 @@
+.header.el-header{
+  padding: 0px;
+  height: 65px;
+}
+.el-header el-row{
+  height: 6px;
+
+}
+.el-main{
+  background-color: rgb(245,245,245);
+  padding: 50px;
+}
+.el-header h3, .el-row h3{
+  font-weight: inherit;
+  font-size: 20px;
+  color: rgb(235,122,119);
+  text-align: left;
+  padding-left: 50px;
+  margin-top: 16px;
+  /*padding-top: 10px;*/
+}
+#login{
+  font-size: 16px;
+  margin-top: 20px;
+  /*padding-left: 0px;*/
+}
+.rowPanel{
+  background-color: white;
+  box-shadow: 2px 2px 3px #BFBFBF;
+  margin-top: 20px;
+  height: 320px;
+}
+.el-alert{
+  margin-top: 10px;
+}
+.rowPanel p{
+  margin-top: 50px;
+}
+
+.el-radio-group{
+  margin-top: 40px;
+}
+
+#exchangeBt{
+  margin-top: 80px;
+  background-color: rgb(102, 186, 183);
+  color: white;
+  border: 0px;
+  width: 100px;
+}
+.count{
+  margin-left: 15px;
+  color:rgb(247, 196, 66) ;
+}

@@ -46,7 +46,7 @@
           // console.log(response.data.msg);
           if (response.data.code == 200) {
             console.log("成功登录");
-            self.$message.success("登录成功")
+            self.$message.success("登录成功");
             self.$router.push({
               name: "dhome",
               params: {

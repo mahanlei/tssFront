@@ -4,7 +4,7 @@
       <span id="title">欢迎注册会员</span>
     </el-form-item>
     <el-form-item label="用户名" prop="member" >
-      <el-input type="text" v-model="ruleForm2.member" placeholder="以字母开头，字母数字组成的不超过10位" auto-complete="off"></el-input>
+      <el-input type="text" v-model="ruleForm2.member" placeholder="字母开头，不超过11位" auto-complete="off"></el-input>
     </el-form-item>
     <el-form-item label="邮箱" prop="email":rules="[
       { required: true, message: '请输入邮箱地址', trigger: 'blur' },
@@ -37,11 +37,13 @@ export default {
 name: "register",
   data() {
   var checkName=(rule,value,callback)=>{
-var nameExp=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{2,10}$/;
+var nameExp=/^[a-zA-Z][a-zA-Z0-9\u4e00-\u9fa5]{1,10}$/
     if(!value){
       return callback(new Error('用户名不能为空'));
-    }else if(!nameExp.test(value)){
-      return callback(new Error('用户名由2-10位字符，由字母a-z及数字组成'));
+    }else if(value.length>11){
+      return callback(new Error('用户名过长'));
+    } else if(!nameExp.test(value)){
+      return callback(new Error('格式不对'));
     }
     callback();
   }
@@ -93,7 +95,7 @@ var nameExp=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{2,10}$/;
       message:'',
       rules2: {
         member:[
-          {validator:checkName,tigger:'blur'}
+          {required:true,validator:checkName,tigger:'blur'}
         ],
         pass: [
           { required:true,validator: validatePass, trigger: 'blur' }
