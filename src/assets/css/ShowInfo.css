@@ -1,0 +1,53 @@
+.header.el-header{
+  padding: 0px;
+  height: 65px;
+}
+.el-header el-row{
+  height: 65px;
+}
+.el-main{
+  background-color: rgb(245,245,245);
+  padding: 50px;
+}
+.el-header h3, .el-row h3{
+  font-weight: inherit;
+  font-size: 20px;
+  color: rgb(235,122,119);
+  text-align: left;
+  padding-left: 50px;
+  margin-top: 16px;
+  /*padding-top: 10px;*/
+;
+}
+#login{
+  font-size: 16px;
+  margin-top: 20px;
+  /*padding-left: 0px;*/
+}
+.el-row {
+  margin-bottom: 20px;
+}
+.el-col {
+  border-radius: 4px;
+}
+#showName{
+  font-size: 30px;
+  color: rgb(235,122,119);
+}
+.rowPanel{
+  background-color: white;
+  box-shadow: 2px 2px 3px #BFBFBF;
+/*width: 980px;*/
+}
+.infoDetail {
+  text-align: left;
+  margin-left: 20%;
+}
+#buyBt{
+  margin-top: 23px;
+  margin-left: 390px;
+  background-color: rgb(219,77,109);
+  color: white;
+  border: 0px;
+  width: 100px;
+}

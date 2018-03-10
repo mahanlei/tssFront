@@ -1,4 +1,5 @@
 <template>
+  <div class="background">
   <el-row class="content">
     <el-col :xs="24" :sm="{span: 6,offset: 9}">
       <span class="title">
@@ -9,10 +10,11 @@
         <el-input v-model="password" placeholder="密码" type="password"></el-input>
         <el-button id="loginButton" type="primary" @click.native.prevent="handleLogin">登录</el-button>
         <el-button id="registerButton" type="primary" v-on:click="handleRegister">注册</el-button>
-        <h4 id="warning" v-show="ok">{{message}}</h4>
+        <!--<h4 id="warning" v-show="ok">{{message}}</h4>-->
       </el-row>
     </el-col>
   </el-row>
+  </div>
 </template>
 
 <script>
@@ -44,6 +46,7 @@
           // console.log(response.data.msg);
           if (response.data.code == 200) {
             console.log("成功登录");
+            self.$message.success("登录成功")
             self.$router.push({
               name: "dhome",
               params: {
@@ -52,12 +55,11 @@
             })
           }else {
             self.ok =true;
-            self.message=response.data.msg;
+            self.$message.error(response.data.msg);
 
           }
         }).catch(function (error) {
             console.log(error);
-
           });
       },
       handleRegister:function (event) {

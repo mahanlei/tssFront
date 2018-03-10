@@ -9,9 +9,11 @@ import axios from 'axios'
 import VueAxios from 'vue-axios'
 import apiConfig from '../config/api.config'
 import utils from '../config/utils'
+import Icon from 'vue-awesome/components/Icon'
 Vue.use(ElementUI) ;// Vue全局使用
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
+Vue.component('icon', Icon);
 Vue.prototype.$utils=utils;
 
 axios.defaults.baseURL = apiConfig.baseUrl;

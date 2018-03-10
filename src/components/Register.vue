@@ -25,9 +25,9 @@
       <el-button type="primary" @click="submitForm('ruleForm2')">提交</el-button>
       <el-button @click="resetForm('ruleForm2')">重置</el-button>
     </el-form-item>
-    <el-form-item class="item1">
-    <span id="warning" v-show="ok">{{message}}</span>
-    </el-form-item>
+    <!--<el-form-item class="item1">-->
+    <!--<span id="warning" v-show="ok">{{message}}</span>-->
+    <!--</el-form-item>-->
   </el-form>
 
 </template>
@@ -130,15 +130,15 @@ var nameExp=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{2,10}$/;
           }).then(function (response) {
             console.log(response.data.msg);
             if (response.data.code == 200) {//注册成功
-
+            self.$message("请前往邮箱验证");
             } else {
               console.log("失败");
               self.ok = true;
-              self.message = response.data.msg;
+              self.$message.error(response.data.msg);
+              // self.message = response.data.msg;
             }
           }).catch(function (error) {
             console.log(error);
-
           });
         } else {
           console.log('error submit!!');
@@ -165,7 +165,7 @@ var nameExp=/^(?![0-9]+$)(?![a-zA-Z]+$)[0-9A-Za-z]{2,10}$/;
           self.$route.push('/');
         } else {
           console.log("激活失败");
-          alert("激活失败");
+          self.$message.error("激活失败");
         }
       }).catch(function (error) {
         console.log(error);

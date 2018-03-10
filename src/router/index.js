@@ -6,6 +6,7 @@ import login from '../components/Login'
 import register from '../components/Register'
 import registerActive from '../components/RegisterActive'
 import profile from '../components/Profile'
+import showInfo from '../components/ShowInfo'
 Vue.use(Router);
 
 export default new Router({
@@ -45,6 +46,11 @@ export default new Router({
       path:'/profile/:mid',
       name:'profile',
       component:profile,
+    },
+    {
+      path:'/showInfo/:mid/:showId',
+      name:'showInfo',
+      component:showInfo,
     }
   ]
 

@@ -1,5 +1,6 @@
-<template>
-<el-form v-loading.fullscreen.lock="loading" ref="profileForm":model="profileForm" status-icon :rules="rules">
+<template >
+  <div class="background">
+<el-form  v-loading.fullscreen.lock="loading" ref="profileForm":model="profileForm" status-icon :rules="rules">
   <el-form-item style="margin-top: 5%">
     <span id="title">个人资料</span>
   </el-form-item>
@@ -22,10 +23,11 @@
     <el-input type="text" v-model="profileForm.points" auto-complete="off" disabled=""></el-input>
   </el-form-item>
   <el-form-item>
-    <el-button type="primary" @click="submitForm('profileForm')">保存</el-button>
+    <el-button type="primary" id="saveBt" @click="submitForm('profileForm')">保存</el-button>
 
   </el-form-item>
 </el-form>
+  </div>
 </template>
 
 <script>

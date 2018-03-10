@@ -1,22 +1,22 @@
 <template>
   <el-container>
     <el-header  >
-      <el-row :gutter="20">
-        <el-col :span="19"><div class="grid-content ">
+      <el-row :gutter="5">
+        <el-col :span="18"><div class="grid-content ">
           <h1>TSS</h1>
         </div></el-col>
-        <el-col :span="3">
+        <el-col :span="2">
           <div class="grid-content ">
           <p id="login" v-on:click="dologin">登录|注册</p>
         </div>
         </el-col>
-        <el-col :span="2" >
+        <el-col :span="3" >
           <div class="grid-content " style="font-size: 30px">
             <el-dropdown @command="handleCommand">
                 <p id="myCenter" >{{$route.params.id}}</p>
               <el-dropdown-menu slot="dropdown">
                 <el-dropdown-item command="myOrder">我的订单</el-dropdown-item>
-                <el-dropdown-item command="points">我的积分</el-dropdown-item>
+                <!--<el-dropdown-item command="points">我的积分</el-dropdown-item>-->
                 <el-dropdown-item command="discountCoupon" >我的优惠券</el-dropdown-item>
                 <el-dropdown-item command="profile" divided>个人资料</el-dropdown-item>
                 <el-dropdown-item command="setting" >设置</el-dropdown-item>
@@ -32,7 +32,7 @@
           <img :src="item.src" height="250px" width="460px"/>
         </el-carousel-item>
       </el-carousel>
-      <div v-for="(card,index) in cards ":key="card" v-bind:showId="card.showId" ref="cardItem" style="margin-left: 20px">
+      <div v-for="(card,index) in cards ":key="card" style="margin-left: 20px">
         <div id="showBrief">
           <img :src="card.picture" height="220px" width=100% />
           <div style="padding: 14px;">
@@ -51,7 +51,6 @@
 
 <script>
 import ElMain from "element-ui/packages/main/src/main";
-import ElFooter from "element-ui/packages/footer/src/main";
 export default {
   name: "home-page",
   data(){
@@ -74,7 +73,6 @@ export default {
   },
   components: {
     ElMain,
-    ElFooter
   },
 
   created(){
@@ -100,7 +98,6 @@ handleCommand(command){
       let self=this;
       switch (command){
         case "myOrder":
-        case "points":
         case "discountCoupon":
         case "profile":
           this.$router.push({
@@ -137,8 +134,12 @@ viewDetail(index){
 let self=this;
   var url = 'show/showInfo';
   var params = new URLSearchParams();
-  var showId=self.cards[index].showId
-  console.log(self.cards[index].showId);
+  var mid=self.$route.params.id;
+  if(mid==null){
+    mid=0;
+  }
+  var showId=self.cards[index].showId;
+  console.log(mid);
   params.append("showId",showId);
   self.$axios({
     method:'post',
@@ -146,7 +147,13 @@ let self=this;
     data:params,
   }).then(function (response) {
     console.log(response.data);
-
+    self.$router.push({
+      name: "showInfo",
+      params: {
+        showId: showId,
+        mid:mid,
+      }
+    })
   }).catch(function (error) {
     console.log(error);
   });
