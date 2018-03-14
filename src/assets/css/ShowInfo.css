@@ -17,7 +17,6 @@
   padding-left: 50px;
   margin-top: 16px;
   /*padding-top: 10px;*/
-;
 }
 #login{
   font-size: 16px;
@@ -43,9 +42,18 @@
   text-align: left;
   margin-left: 20%;
 }
-#buyBt{
+#buyBt1{
   margin-top: 23px;
-  margin-left: 390px;
+  margin-left: 240px;
+  background-color: rgb(219,77,109);
+  color: white;
+  border: 0px;
+  width: 100px;
+}
+#buyBt2{
+  display: inline;
+  margin-top: 23px;
+  margin-left: 30px;
   background-color: rgb(219,77,109);
   color: white;
   border: 0px;

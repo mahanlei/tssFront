@@ -9,6 +9,7 @@
 <script>
   import  homePage from'./components/HomePage'
   import login from './components/Login'
+
 export default {
   name: 'App',
   data(){

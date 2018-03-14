@@ -10,6 +10,8 @@ import VueAxios from 'vue-axios'
 import apiConfig from '../config/api.config'
 import utils from '../config/utils'
 import Icon from 'vue-awesome/components/Icon'
+import Vuex from 'vuex';
+Vue.use(Vuex);
 Vue.use(ElementUI) ;// Vue全局使用
 Vue.use(VueRouter);
 Vue.use(VueAxios, axios);
@@ -38,3 +40,4 @@ new Vue({
   components: { App },
   template: '<App/>'
 })
+

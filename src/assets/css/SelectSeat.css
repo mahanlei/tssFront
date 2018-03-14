@@ -1,0 +1,24 @@
+
+
+
+.rowPanel1,.rowPanel2,.rowPanel3{
+  background-color: white;
+  box-shadow: 2px 2px 3px #BFBFBF;
+}
+.rowPanel1{
+  height: 150px;
+  margin-top: 30px;
+}
+.rowPanel1 p{
+  padding-top: 3px;
+float: contour;
+  /*margin-left: 30px;*/
+  color: rgb(247, 196, 66);
+}
+.rowPanel2{
+  margin-top: 10px;
+  height: 400px;
+}
+.el-select{
+  margin-top: 20px;
+}

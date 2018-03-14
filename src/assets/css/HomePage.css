@@ -8,6 +8,7 @@
 .el-main{
   background-color: rgb(245,245,245);
   padding: 30px;
+  /*height: fit-content;*/
 }
 
 
@@ -57,7 +58,7 @@
   padding:0px;
   float: right;
   font-size: inherit;
-   color: rgb(247, 196, 66);
+  color: rgb(247, 196, 66);
 }
 .clearfix:before,
 .clearfix:after {
