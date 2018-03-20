@@ -36,9 +36,9 @@
         <div id="showBrief">
           <img :src="card.picture" height="220px" width=100% />
           <div style="padding: 14px;">
-            <span style="font-size: 18px">{{card.name}}</span>
+            <span style="font-size: 20px">{{card.name}}</span>
             <div class="bottom clearfix">
-              <p class="time" style="color:rgb(215,196,187)">类型：{{ card.type }}</p>
+              <p style="color:rgb(215,196,187);font-size: 14px">类型：{{ card.type }}</p>
               <el-button type="text" class="button"  @click="viewDetail(index)">查看详情</el-button>
             </div>
           </div>

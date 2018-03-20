@@ -67,13 +67,16 @@
             <el-row class="infoDetail">
               <span  >{{unConsumedTicket.payPrice}}</span>
             </el-row>
-            <el-row class="infoDetail" style="margin-top: 15px">
+            <el-row class="infoDetail" style="margin-top: 6px">
             <span style="font-size: 12px">购买时间：{{unConsumedTicket.createdTime}}</span>
+            </el-row>
+            <el-row >
+              <span style="font-size: 12px">订单编号：{{unConsumedTicket.tid}}</span>
             </el-row>
           </div>
           </el-col>
             <el-col :span="4">
-              <el-button id="refunedBt" @click="doRefuned">退订</el-button>
+              <el-button id="refunedBt" @click="doRefuned(index)">退订</el-button>
             </el-col>
           </el-row>
         </div>
@@ -132,10 +135,10 @@
                 <el-row class="infoDetail">
                   <span  >{{UnsubscribeTicket.payPrice}}</span>
                 </el-row>
-                <el-row class="infoDetail" style="margin-top: 15px">
+                <el-row class="infoDetail" style="margin-top: 5px">
                   <span style="font-size: 12px">购买时间：{{UnsubscribeTicket.createdTime}}</span>
                 </el-row>
-                <el-row class="infoDetail" style="margin-top: 15px">
+                <el-row >
                   <span style="font-size: 12px">退订时间：{{UnsubscribeTicket.refunedTime}}</span>
                 </el-row>
               </div>
@@ -169,6 +172,7 @@
                 <el-row class="infoDetail" style="margin-top: 15px">
                   <span style="font-size: 12px">购买时间：{{payFailed.createdTime}}</span>
                 </el-row>
+
               </div>
             </el-col>
           </el-row>
@@ -343,6 +347,36 @@ export default {
 
       }
     },
+    doRefuned(index){
+      let self=this;
+      self.$confirm('此操作将退订此票单, 是否继续?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        var params = new URLSearchParams();
+        var tid=this.unConsumedTickets[index].tid;
+        params.append("tid",tid);
+        self.$axios({
+          method:'post',
+          url:'doRefund',
+          data:params,
+        }).then(function (response) {
+          console.log(response.data.msg);
+          self.$message({
+            type: 'success',
+            message: '退订成功'
+          });
+        }).catch(function (error) {
+          console.log(error);
+        })
+      }).catch(() => {
+        self.$message({
+          type: 'info',
+          message: '已取消退订'
+        });
+      });
+    },
     fetchData(){
       let self=this;
       var mid=self.$route.params.mid;
@@ -361,6 +395,7 @@ export default {
         console.log(response.data);
         for(var i=0;i<response.data.length;i++){
           var obj={
+            "tid":response.data[i].tid,
             "picture":response.data[i].picture,
             "showName":response.data[i].showName,
           "staName":response.data[i].staName,

@@ -218,14 +218,20 @@
         var mid = self.$route.params.mid;
         var showId = self.$route.params.showId;
         var stadiumId = self.$route.params.stadiumId;
+        var discountType=0;
         params.append("mid", mid);
 
         var url1 = 'buyTicket/getCreatedTime';
         var params1 = new URLSearchParams();
+        var params2 = new URLSearchParams();
         console.log(stadiumId);
         params1.append("mid", mid);
         params1.append("showId", showId);
         params1.append("stadiumId", stadiumId);
+        params2.append("mid", mid);
+        params2.append("showId", showId);
+        params2.append("stadiumId", stadiumId);
+        params2.append("discountType", discountType);
         self.$axios.all([self.$axios({
           method: 'post',
           url: url,
@@ -234,8 +240,12 @@
           method: 'post',
           url: url1,
           data: params1,
+        }),self.$axios({
+          method:'post',
+          url:'buyTicket/getPayPrice',
+          data:params2
         })])
-          .then(self.$axios.spread(function (resp1, resp2) {
+          .then(self.$axios.spread(function (resp1, resp2,response) {
             self.discountInfo.count1 = resp1.data.discountCouponType1;
             self.discountInfo.count2 = resp1.data.discountCouponType2;
             self.discountInfo.count3 = resp1.data.discountCouponType3;
@@ -255,7 +265,17 @@
             console.log(resp2.data);
             self.createdTime = resp2.data.createdTime;
             self.loading = false;
-
+            self.totalPayPrice1 = "共" + response.data.totalPayPrice + "元";
+            self.totalPayPrice=response.data.totalPayPrice;
+            for (var i = 0; i < response.data.seats.length; i++) {
+              var obj = {
+                "name": response.data.seats[i].seatRow + "排" + response.data.seats[i].seatColumn + "列",
+                "row": response.data.seats[i].seatRow,
+                "column": response.data.seats[i].seatColumn,
+                "price": response.data.seats[i].price
+              };
+              self.seats.push(obj);
+            }
           })).catch(function (error) {
           console.log(error);
 

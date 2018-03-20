@@ -12,7 +12,6 @@ import utils from '../config/utils'
 import Vuex from 'vuex';
 import store from './vuex/store'
 
-import qs from 'qs'
 Vue.use(Vuex);
 Vue.use(ElementUI) ;// Vue全局使用
 Vue.use(VueRouter);

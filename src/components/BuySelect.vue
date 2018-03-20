@@ -15,19 +15,7 @@
 
 <script>
 export default {
-
 name: "buy-select",
-  data(){
-    return{
-
-    }
-  },
-
-  methods:{
-
-
-  }
-
 }
 </script>
 

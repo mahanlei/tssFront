@@ -55,9 +55,9 @@
   line-height: 5px;
 }
 .button{
-  padding:0px;
+  padding-top:10px;
   float: right;
-  font-size: inherit;
+  font-size: 17px;
   color: rgb(247, 196, 66);
 }
 .clearfix:before,

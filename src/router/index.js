@@ -9,11 +9,11 @@ import profile from '../components/Profile'
 import showInfo from '../components/ShowInfo'
 import discountCoupon from '../components/DiscountCoupon'
 import buySelect from '../components/BuySelect'
-import buyNoSelect from '../components/buyTicket/BuyNoSelect'
+import buyNoSelect from '../components/BuyNoSelect'
 import selectSeat from '../components/SelectSeat'
 import pay from '../components/Pay'
 import complete from '../components/Complete'
-import inputSeatNumber from '../components/buyTicket/InputSeatNumber'
+import inputSeatNumber from '../components/InputSeatNumber'
 import myOrder from '../components/MyOrder'
 Vue.use(Router);
 
