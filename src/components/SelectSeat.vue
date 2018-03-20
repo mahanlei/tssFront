@@ -1,11 +1,18 @@
 <template>
-  <div>
+  <div v-loading.fullscreen.lock="loading">
+    <el-steps :active=1 finish-status="success" align-center>
+      <el-step title="选座" ></el-step>
+      <el-step title="支付" ></el-step>
+      <el-step title="完成" ></el-step>
+    </el-steps>
     <el-row class="rowPanel1">
       <p style="  margin-top: 10px;">演出：{{showName}}</p>
       <p>场馆：{{staName}}</p>
       <p>共{{seatRows}}排{{seatColumns}}列</p>
     </el-row>
     <el-row class="rowPanel2">
+      <el-alert title="" type="warning" description="最多购买6张票" close-text="我知道了" center>
+      </el-alert>
       <el-select v-model="rowValue" placeholder="请选择排数" @change="selectRow">
         <el-option
           v-for="item in optionsRow"
@@ -27,23 +34,22 @@
       </el-select>
       列
       <el-row style="margin-top: 30px">
-       <el-alert title="" type="warning" description="最多购买6张票" close-text="我知道了" center>
-        </el-alert>
+
       <el-tag
         v-for="tag in seats"
         :key="tag.name"
         closable
         :disable-transitions="false"
-        :type="tag.type"
         @close="handleClose(tag)">
         {{tag.name}}
       </el-tag>
+      </el-row>
+      <el-row style="margin-top: 60px">
         <el-button style="margin-top: 100px;background-color: rgb(102, 186, 183);
   color: white;
   border: 0px;
-  width: 100px;" @click="save">去支付</el-button>
+  width: 100px;" @click="confirmTickets">确认订单</el-button>
       </el-row>
-
     </el-row>
     <!--<el-row style="height: 200px">-->
       <!---->
@@ -54,7 +60,6 @@
 </template>
 <script>
   import ElRow from "element-ui/packages/row/src/row";
-  // import store from '../assets/js/Store'
 
   export default {
     components: {ElRow},
@@ -70,14 +75,7 @@
         optionsRow: [],
         optionsColumn: [],
         seats:[],
-      }
-    },
-    // store:store,
-    vuex:{
-      action:{
-        update:function({dispatch},value) {
-          dispatch('UPDATE',value)
-        }
+        loading :true,
       }
     },
     created() {
@@ -86,14 +84,41 @@
 
     methods: {
 
-      save(){
+      confirmTickets(){
         let self=this;
-        let value=self.seats;
-        self.update(value);
-        self.$router.push({
-          name:'step2',
-          params
-        })
+        var url = '/buyTicket/confirmSeats';
+        var params = new URLSearchParams();
+        var mid=self.$route.params.mid;
+        var showId = self.$route.params.showId;
+        var stadiumId = self.$route.params.stadiumId;
+        var dataList=[];
+        for(var i=0;i<self.seats.length;i++){
+          var obj={"mid":mid,"showId":showId,"stadiumId":stadiumId,
+            "seatRow":self.seats[i].row,"seatColumn":self.seats[i].column,
+            "price":self.seats[i].price}
+             dataList.push(obj);
+        }
+        var data=JSON.stringify(dataList);
+        console.log(data);
+        params.append("seats",data);
+        // params.append("mid",mid);
+        self.$axios({
+          method:'post',
+          url:url,
+          data:params,
+        }).then(function (response) {
+
+         self.$router.push({
+           name:'step2',
+           params:{
+                   mid:mid,
+                   stadiumId:stadiumId,
+                   showId:showId,
+                 }
+         });
+        }).catch(function (error) {
+          console.log(error);
+        });
       },
       fetchData() {
         let self = this;
@@ -149,13 +174,7 @@
         });
 
       },
-      getObjectValues(object)
-  {
-    var values = [];
-    for (var property in object)
-      values.push(object[property]);
-    return values;
-  },
+
       selectColumn(columnValue) {
         // console.log(rowValue);
         let self = this;
@@ -175,9 +194,9 @@
         }).then(function (response) {
           console.log(response.data);
           // for (var i = 0; i < response.data.length; i++) {
-            var JSONObj={"name":row+"排"+columnValue+"列\n"+response.data.price+"元",
-            "type":''};
-            console.log(self.getObjectValues(self.seats));
+            var JSONObj={"name":row+"排"+columnValue+"列"+response.data.price+"元",
+              "row":row,"column":columnValue,"price":response.data.price};
+            // console.log(self.getObjectValues(self.seats));
             // console.log(self.seats.indexOf(JSONObj));
             // if(self.getObjectValues(self.seats).(JSONObj)==-1) {
 
@@ -196,7 +215,6 @@
         }).catch(function (error) {
           console.log(error);
         });
-        // self.optionsRow=[];
         self.optionsColumn=[];
         self.rowValue='';
         self.columnValue='';

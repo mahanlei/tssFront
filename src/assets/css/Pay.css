@@ -2,5 +2,20 @@
   background-color: white;
   box-shadow: 2px 2px 3px #BFBFBF;
   margin-top: 20px;
-  height: 320px;
+  height: 800px;
+}
+.el-alert{
+  margin-top: 15px;
+}
+.count{
+  margin-left: 9px;
+}
+.el-radio-group{
+  margin-top: 24px;
+
+}
+.el-radio{
+  display: block;
+  margin-bottom: 16px;
+  margin-left: 2px;
 }

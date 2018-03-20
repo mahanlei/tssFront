@@ -98,6 +98,13 @@ handleCommand(command){
       let self=this;
       switch (command){
         case "myOrder":
+          this.$router.push({
+            name:"myOrder",
+            params:{
+              mid:self.$route.params.id
+            }
+          })
+          break;
         case "discountCoupon":
           this.$router.push({
             name:"discountCoupon",

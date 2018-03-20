@@ -12,8 +12,9 @@ import buySelect from '../components/BuySelect'
 import buyNoSelect from '../components/buyTicket/BuyNoSelect'
 import selectSeat from '../components/SelectSeat'
 import pay from '../components/Pay'
-import complete from '../components/buyTicket/Complete'
+import complete from '../components/Complete'
 import inputSeatNumber from '../components/buyTicket/InputSeatNumber'
+import myOrder from '../components/MyOrder'
 Vue.use(Router);
 
 export default new Router({
@@ -53,6 +54,11 @@ export default new Router({
       path:'/profile/:mid',
       name:'profile',
       component:profile,
+    },
+    {
+      path:'/myOrder/:mid',
+      name:'myOrder',
+      component:myOrder,
     },
     {
       path:'/showInfo/:mid/:showId',

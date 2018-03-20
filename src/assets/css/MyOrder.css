@@ -1,0 +1,52 @@
+.header.el-header{
+  padding: 0px;
+  height: 65px;
+}
+.el-header el-row{
+  height: 65px;
+}
+.el-main{
+  background-color: rgb(245,245,245);
+  padding: 50px;
+}
+.el-header h3, .el-row h3{
+  font-weight: inherit;
+  font-size: 20px;
+  color: rgb(235,122,119);
+  text-align: left;
+  padding-left: 50px;
+  margin-top: 16px;
+  /*padding-top: 10px;*/
+}
+#login{
+  font-size: 16px;
+  margin-top: 20px;
+  /*padding-left: 0px;*/
+}
+.ticketInfoBrief{
+  margin-left: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 3px #BFBFBF;
+}
+ .image{
+   height:160px;
+   width:100%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.infoDetail {
+  text-align: center;
+  /*margin-left: 10%;*/
+  font-size: 15px;
+  margin-top: 6px;
+}
+#refunedBt{
+  margin-top: 75%;
+  background-color: rgb(219,77,109);
+  color: white;
+  border: 0px;
+  width: 70px;
+  height: 35px;
+  font-size: 13px;
+}

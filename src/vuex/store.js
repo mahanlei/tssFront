@@ -6,15 +6,14 @@ Vue.use(Vuex)
 
 // 创建一个对象来保存应用启动时的初始状态
 const state = {
-
   seats:[],
 }
 
 // 创建一个对象存储一系列我们接下来要写的 mutation 函数
 const mutations = {
 
-  UPDATE (state, value) {
-    state.myData = value
+  setSeats (state, value) {
+   Object.assign(state.seats,value)
   }
 }
 
