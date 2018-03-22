@@ -20,5 +20,5 @@ name: "buy-select",
 </script>
 
 <style scoped>
-@import "../assets/css/BuySelect.css";
+@import "../../assets/css/member/BuySelect.css";
 </style>

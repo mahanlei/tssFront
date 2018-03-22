@@ -176,5 +176,5 @@ let self=this;
 </script>
 
 <style scoped>
-  @import "../assets/css/HomePage.css";
+  @import "../../assets/css/member/HomePage.css";
 </style>

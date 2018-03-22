@@ -143,5 +143,5 @@ self.loading=false;
 </script>
 
 <style scoped>
-@import "../assets/css/Profile.css";
+@import "../../assets/css/member/Profile.css";
 </style>

@@ -184,5 +184,5 @@ var nameExp=/^[a-zA-Z][a-zA-Z0-9\u4e00-\u9fa5]{1,10}$/
 </script>
 
 <style scoped>
-@import "../assets/css/Register.css";
+@import "../../assets/css/member/Register.css";
 </style>

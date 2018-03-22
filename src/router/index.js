@@ -1,20 +1,27 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 
-import homePage from '../components/HomePage'
-import login from '../components/Login'
-import register from '../components/Register'
-import registerActive from '../components/RegisterActive'
-import profile from '../components/Profile'
-import showInfo from '../components/ShowInfo'
-import discountCoupon from '../components/DiscountCoupon'
-import buySelect from '../components/BuySelect'
-import buyNoSelect from '../components/BuyNoSelect'
-import selectSeat from '../components/SelectSeat'
-import pay from '../components/Pay'
-import complete from '../components/Complete'
-import inputSeatNumber from '../components/InputSeatNumber'
-import myOrder from '../components/MyOrder'
+import homePage from '../components/member/HomePage'
+import login from '../components/member/Login'
+import register from '../components/member/Register'
+import registerActive from '../components/member/RegisterActive'
+import profile from '../components/member/Profile'
+import showInfo from '../components/member/ShowInfo'
+import discountCoupon from '../components/member/DiscountCoupon'
+import buySelect from '../components/member/BuySelect'
+import buyNoSelect from '../components/member/BuyNoSelect'
+import selectSeat from '../components/member/SelectSeat'
+import pay from '../components/member/Pay'
+import complete from '../components/member/Complete'
+import inputSeatNumber from '../components/member/InputSeatNumber'
+import myOrder from '../components/member/MyOrder'
+import staLogin from '../components/stadium/StaLogin'
+import staHome from '../components/stadium/StaHomepage'
+import staInfo from '../components/stadium/StaInfo'
+import checkTickets from '../components/stadium/CheckTickets'
+import existingShow from '../components/stadium/ExistingShow'
+import offlineTicket from '../components/stadium/OfflineTicket'
+import publishShow from '../components/stadium/PublishShow'
 Vue.use(Router);
 
 export default new Router({
@@ -83,7 +90,7 @@ export default new Router({
 
     },
     {
-      path:'/buyNoSelect/:mid/:stadiumId/:showId/',
+      path:'/buyNoSelect/:mid/:stadiumId/:showId',
       // name:'buyNoSelect',
       children:[
         {path:'',name :'inputSeatNumber',component:inputSeatNumber},
@@ -93,6 +100,24 @@ export default new Router({
       ],
       component:buyNoSelect,
 
+    },
+    //场馆相关界面路由
+    {
+      path:'/stadium/login',
+      name:'staLogin',
+      component:staLogin,
+    },
+    {
+      path:'/stadium/home/:id',
+      // name:'staHome',
+      component:staHome,
+      children:[
+        {path:'',name:'existingShow',component:existingShow},
+        {path:'offlineTicket',name:'offlineTicket',component:offlineTicket},
+        {path:'checkTickets',name:'checkTickets',component:checkTickets},
+        {path:'publishShow',name:'publishShow',component:publishShow},
+        {path:'staInfo',name:'staInfo',component:staInfo},
+      ]
     }
 
   ]

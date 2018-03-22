@@ -7,8 +7,8 @@
 </template>
 
 <script>
-  import  homePage from'./components/HomePage'
-  import login from './components/Login'
+  import  homePage from './components/member/HomePage'
+  import login from './components/member/Login'
 
 export default {
   name: 'App',

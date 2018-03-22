@@ -193,5 +193,5 @@
 </script>
 
 <style>
-  @import "../assets/css/ShowInfo.css";
+  @import "../../assets/css/member/ShowInfo.css";
 </style>

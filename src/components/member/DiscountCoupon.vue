@@ -161,5 +161,5 @@
 </script>
 
 <style scoped>
-  @import "../assets/css/DiscountCoupon.css";
+  @import "../../assets/css/member/DiscountCoupon.css";
 </style>

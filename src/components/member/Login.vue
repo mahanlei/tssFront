@@ -72,6 +72,6 @@
 </script>
 
 <style scoped>
-  @import "../assets/css/Login.css";
+  @import "../../assets/css/member/Login.css";
 
 </style>

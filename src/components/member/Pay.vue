@@ -287,5 +287,5 @@
 </script>
 
 <style scoped>
-  @import "../assets/css/Pay.css";
+  @import "../../assets/css/member/Pay.css";
 </style>

@@ -1,0 +1,42 @@
+
+.header.el-header{
+  padding: 0px;
+  height: 65px;
+  /*background-color: rgb(34,31,31);*/
+}
+.el-header el-row{
+  height: 65px;
+}
+.el-main{
+  background-color: whitesmoke;
+  padding: 30px;
+  height:800px;
+}
+
+.grid-content {
+  border-radius: 4px;
+  height: 45px;
+}
+.el-header h2{
+  font-weight: normal;
+  font-size: 27px;
+  color:rgb(235,122,119);
+  text-align: left;
+  padding-left: 50px;
+  margin-top: 10px;
+}
+#staId{
+  font-size: 18px;
+}
+
+.el-aside{
+  background-color:rgb(34,31,31);
+  height: 800px;
+  width: 200px;
+  text-align: left;
+}
+.el-menu{
+  margin-top: 70px;
+  border: 0;
+  /*box-shadow: 2px 2px 3px #BFBFBF;*/
+}

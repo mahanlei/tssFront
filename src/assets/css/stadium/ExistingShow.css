@@ -1,0 +1,29 @@
+.infoDetail {
+  text-align: center;
+  /*margin-left: 10%;*/
+  font-size: 15px;
+  margin-top: 6px;
+}
+.existingShow{
+  height: fit-content;
+  margin-left: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 3px #BFBFBF;
+}
+.image{
+  height:160px;
+  width:100%;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+.infoDetail {
+  text-align: center;
+  /*margin-left: 10%;*/
+  font-size: 15px;
+  margin-top: 6px;
+}
+.el-tag{
+margin-top: 20px;
+  margin-left: 9px;
+}

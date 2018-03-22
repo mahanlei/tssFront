@@ -231,5 +231,5 @@
 </script>
 
 <style scoped>
-  @import "../assets/css/SelectSeat.css";
+  @import "../../assets/css/member/SelectSeat.css";
 </style>

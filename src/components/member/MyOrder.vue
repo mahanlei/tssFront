@@ -416,5 +416,5 @@ export default {
 </script>
 
 <style scoped>
-@import "../assets/css/MyOrder.css";
+@import "../../assets/css/member/MyOrder.css";
 </style>
