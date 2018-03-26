@@ -175,7 +175,7 @@
           self.totalPayPrice=response.data.totalPayPrice;
           for (var i = 0; i < response.data.seats.length; i++) {
             var obj = {
-              "name": response.data.seats[i].seatRow + "排" + response.data.seats[i].seatColumn + "列",
+              "name": response.data.seats[i].seatRow + "排" + response.data.seats[i].seatColumn + "座",
               "row": response.data.seats[i].seatRow,
               "column": response.data.seats[i].seatColumn,
               "price": response.data.seats[i].price
@@ -269,7 +269,7 @@
             self.totalPayPrice=response.data.totalPayPrice;
             for (var i = 0; i < response.data.seats.length; i++) {
               var obj = {
-                "name": response.data.seats[i].seatRow + "排" + response.data.seats[i].seatColumn + "列",
+                "name": response.data.seats[i].seatRow + "排" + response.data.seats[i].seatColumn + "座",
                 "row": response.data.seats[i].seatRow,
                 "column": response.data.seats[i].seatColumn,
                 "price": response.data.seats[i].price

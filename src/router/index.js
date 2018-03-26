@@ -22,6 +22,8 @@ import checkTickets from '../components/stadium/CheckTickets'
 import existingShow from '../components/stadium/ExistingShow'
 import offlineTicket from '../components/stadium/OfflineTicket'
 import publishShow from '../components/stadium/PublishShow'
+import offlinePay from '../components/stadium/OfflinePay'
+import staFinance from '../components/stadium/StaFinance'
 Vue.use(Router);
 
 export default new Router({
@@ -113,10 +115,13 @@ export default new Router({
       component:staHome,
       children:[
         {path:'',name:'existingShow',component:existingShow},
-        {path:'offlineTicket',name:'offlineTicket',component:offlineTicket},
+        {path:'offlineTicket/:showId',name:'offlineTicket',component:offlineTicket},
+        {path:'offlinePay/:mid/:showId',name:'offlinePay',component:offlinePay},
         {path:'checkTickets',name:'checkTickets',component:checkTickets},
         {path:'publishShow',name:'publishShow',component:publishShow},
         {path:'staInfo',name:'staInfo',component:staInfo},
+        {path:'staFinance',name:'staFinance',component:staFinance}
+
       ]
     }
 

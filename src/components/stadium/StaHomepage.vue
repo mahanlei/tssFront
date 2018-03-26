@@ -15,16 +15,13 @@
     <el-container style="margin-top: 3px">
 <el-aside width="160px" >
   <el-menu
-    default-active="1"
+   :default-active="activeIndex"
     class="el-menu-vertical-demo"
     @select="handleSelect"
     background-color=rgb(34,31,31)
     text-color="#fff">
     <el-menu-item index="1">
       <span slot="title">已有演出</span>
-    </el-menu-item>
-    <el-menu-item index="2" >
-      <span slot="title">线下购票</span>
     </el-menu-item>
     <el-menu-item index="3" >
       <span slot="title">检票</span>
@@ -34,6 +31,9 @@
     </el-menu-item>
     <el-menu-item index="5">
       <span slot="title">查看/修改信息</span>
+    </el-menu-item>
+    <el-menu-item index="6">
+      <span slot="title">财务数据</span>
     </el-menu-item>
   </el-menu>
 </el-aside >
@@ -56,6 +56,7 @@ export default {
   data(){
   return{
 staId:'',
+    activeIndex:'1',
   }
   },
   created(){
@@ -66,10 +67,46 @@ staId:'',
       let self=this;
      self.staId=self.$route.params.id;
     },
-    handleSelect(){
-
+    handleSelect(key){
+      let self=this;
+      console.log(key);
+      self.activeIndex=key;
+switch (key){
+  case '1':
+    self.$router.push({
+      name:'existingShow',
+      params:{
+        id:self.$route.params.id
+      }
+    })
+        break;
+  case '3':
+    self.$router.push({
+      name:'checkTickets',
+      params:{
+        id:self.$route.params.id
+      }
+    });
+    break;
+  case '4':
+    self.$router.push({
+      name:'publishShow',
+      params:{
+        id:self.$route.params.id
+      }
+    })
+    break;
+  case '5':
+    self.$router.push({
+      name:'staFinance',
+      params:{
+        id:self.$route.params.id
+      }
+    })
+    break;
+}
     },
-    
+
   }
 }
 </script>

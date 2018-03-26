@@ -194,7 +194,7 @@
         }).then(function (response) {
           console.log(response.data);
           // for (var i = 0; i < response.data.length; i++) {
-            var JSONObj={"name":row+"排"+columnValue+"列"+response.data.price+"元",
+            var JSONObj={"name":row+"排"+columnValue+"座"+response.data.price+"元",
               "row":row,"column":columnValue,"price":response.data.price};
             // console.log(self.getObjectValues(self.seats));
             // console.log(self.seats.indexOf(JSONObj));

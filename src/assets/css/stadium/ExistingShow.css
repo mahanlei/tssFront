@@ -5,25 +5,33 @@
   margin-top: 6px;
 }
 .existingShow{
-  height: fit-content;
+  height: 240px;
   margin-left: 20px;
   margin-bottom: 20px;
   background-color: white;
   box-shadow: 2px 2px 3px #BFBFBF;
 }
 .image{
-  height:160px;
+  height:228px;
   width:100%;
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 6px;
+  margin-left: 3px;
 }
 .infoDetail {
   text-align: center;
   /*margin-left: 10%;*/
   font-size: 15px;
-  margin-top: 6px;
+  margin-top: 10px;
 }
 .el-tag{
 margin-top: 20px;
-  margin-left: 9px;
+  margin-left: 4px;
+}
+#buyBt1{
+  margin-top: 160px;
+  /*margin-left: 10px;*/
+  background-color: rgb(219,77,109);
+  color: white;
+  border: 0px;
+  width: 100px;
 }
