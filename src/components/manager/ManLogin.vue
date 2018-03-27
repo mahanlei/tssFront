@@ -9,7 +9,6 @@
           <el-input v-model="account" placeholder="账号" clearable=""></el-input>
           <el-input v-model="password" placeholder="密码" type="password"></el-input>
           <el-button id="loginButton" type="primary" @click.native.prevent="handleLogin">登录</el-button>
-          <el-button id="registerButton" type="primary" v-on:click="handleRegister">注册</el-button>
         </el-row>
       </el-col>
     </el-row>
@@ -18,23 +17,23 @@
 
 <script>
 export default {
-name: "login",
-  data() {
-    return {
-      account: '',
-      password: '',
-      ok:true,
-      message:'',
-    };
+name: "man-login",
+  data(){
+  return{
+    account: '',
+    password: '',
+  }
+
   },
-  methods: {
+  methods:{
+
     handleLogin: function () {
-      const url = '/stadium/login';
+      const url = 'manager/login';
       let self = this;
       var params = new URLSearchParams();
       var uid = this.account;
       var passw = this.password;
-      params.append('staId', uid);
+      params.append('id', uid);
       params.append('password', passw);
       this.$axios({
         method: 'post',
@@ -45,13 +44,9 @@ name: "login",
           console.log("成功登录");
           self.$message.success("登录成功");
           self.$router.push({
-            name: "existingShow",
-            params: {
-              id: uid
-            }
+            name: "manHome",
           })
         } else {
-          self.ok = true;
           self.$message.error(response.data.msg);
 
         }
@@ -59,16 +54,10 @@ name: "login",
         console.log(error);
       });
     },
-    handleRegister: function (event) {
-      let self = this;
-      self.$router.push({
-name:'staRegister',
-      });
-    },
   }
-  }
+}
 </script>
 
 <style scoped>
-@import "../../assets/css/member/Login.css";
+  @import "../../assets/css/member/Login.css";
 </style>

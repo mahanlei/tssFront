@@ -9,7 +9,7 @@
         </el-col>
         <el-col :span="12">
           <div style="padding: 14px;">
-              <span v-show="false">{{showInfo.showId}}</span>
+
             <el-row class="infoDetail">
               <span  style="font-size: 20px">{{showInfo.showName}}</span>
             </el-row>
@@ -20,7 +20,7 @@
               <span style="color: rgb(104,104,104)">结束时间：{{showInfo.endTime}}</span>
             </el-row>
             <el-row class="infoDetail">
-              <span style="color: rgb(104,104,104)">类型：{{showInfo.type}}</span>
+              <span style="color: rgb(104,104,104)">ID:{{showInfo.showId}}</span>  <span style="color: rgb(104,104,104)">类型：{{showInfo.type}}</span>
             </el-row>
             <el-row class="infoDetail" style="margin-top: 16px">
               <span style="font-size: 12px">描述：{{showInfo.description}}</span>

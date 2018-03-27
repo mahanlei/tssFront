@@ -14,7 +14,7 @@
         </el-col>
       </el-row>
     </el-header>
-    <el-main>
+    <el-main v-loading.fullscreen.lock="loading">
   <el-tabs v-model="activeName" @tab-click="handleClick(activeName)">
     <el-tab-pane label="待付款" name="first">
       <div class="ticketInfoBrief" v-for="(unpaidTicket,index) in unpaidTickets ":key="unpaidTicket" >
@@ -32,7 +32,7 @@
                 <span style="">地点：{{unpaidTicket.staName}}</span>
               </el-row >
               <el-row class="infoDetail">
-                <span >{{unpaidTicket.seatRow}}排{{unpaidTicket.seatColumn}}列</span>
+                <span >{{unpaidTicket.seatRow}}排{{unpaidTicket.seatColumn}}座</span>
               </el-row>
               <el-row class="infoDetail">
                 <span  >{{unpaidTicket.payPrice}}</span>
@@ -62,7 +62,7 @@
             <span style="">地点：{{unConsumedTicket.staName}}</span>
             </el-row >
             <el-row class="infoDetail">
-            <span >{{unConsumedTicket.seatRow}}排{{unConsumedTicket.seatColumn}}列</span>
+            <span >{{unConsumedTicket.seatRow}}排{{unConsumedTicket.seatColumn}}座</span>
             </el-row>
             <el-row class="infoDetail">
               <span  >{{unConsumedTicket.payPrice}}</span>
@@ -100,7 +100,7 @@
                   <span style="">地点：{{consumedTicket.staName}}</span>
                 </el-row >
                 <el-row class="infoDetail">
-                  <span >{{consumedTicket.seatRow}}排{{consumedTicket.seatColumn}}列</span>
+                  <span >{{consumedTicket.seatRow}}排{{consumedTicket.seatColumn}}座</span>
                 </el-row>
                 <el-row class="infoDetail">
                   <span  >{{consumedTicket.payPrice}}</span>
@@ -130,7 +130,7 @@
                   <span style="">地点：{{UnsubscribeTicket.staName}}</span>
                 </el-row >
                 <el-row class="infoDetail">
-                  <span >{{UnsubscribeTicket.seatRow}}排{{UnsubscribeTicket.seatColumn}}列</span>
+                  <span >{{UnsubscribeTicket.seatRow}}排{{UnsubscribeTicket.seatColumn}}座</span>
                 </el-row>
                 <el-row class="infoDetail">
                   <span  >{{UnsubscribeTicket.payPrice}}</span>
@@ -164,7 +164,7 @@
                   <span style="">地点：{{payFailed.staName}}</span>
                 </el-row >
                 <el-row class="infoDetail">
-                  <span >{{payFailed.seatRow}}排{{payFailed.seatColumn}}列</span>
+                  <span >{{payFailed.seatRow}}排{{payFailed.seatColumn}}座</span>
                 </el-row>
                 <el-row class="infoDetail">
                   <span  >{{payFailed.payPrice}}</span>
@@ -201,7 +201,7 @@ export default {
       UnsubscribeTickets:[],
       consumedTickets:[],
       payFaileds:[],
-
+loading:true,
     };
   },
   created() {
@@ -406,7 +406,7 @@ export default {
           };
           self.unConsumedTickets.push(obj);
         }
-
+self.loading=false;
       }).catch(function (error) {
         console.log(error);
       });

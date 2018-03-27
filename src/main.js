@@ -11,7 +11,7 @@ import apiConfig from '../config/api.config'
 import utils from '../config/utils'
 import Vuex from 'vuex';
 import store from './vuex/store'
-
+import echarts from 'echarts'
 Vue.use(Vuex);
 Vue.use(ElementUI) ;// Vue全局使用
 Vue.use(VueRouter);
@@ -23,18 +23,7 @@ axios.defaults.baseURL = apiConfig.baseUrl;
 axios.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
 Vue.config.productionTip = false;
 Vue.prototype.$axios = axios;
-
-// const router =  new VueRouter({
-//   mode: 'history', // 开启HTML5的history模式，可以让地址栏的url长得跟正常页面跳转的url一样。（不过还需要后端配合，讲Koa的时候会说）
-//   routes
-// })
-
-// const app = new Vue({
-//   router, // 启用router
-//   render: h => h(App)
-// }).$mount('#app') //挂载到id为app的元素上
-
-/* eslint-disable no-new */
+Vue.prototype.$echarts = echarts;
 new Vue({
   el: '#app',
   router,

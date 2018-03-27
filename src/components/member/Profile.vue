@@ -127,9 +127,9 @@ self.loading=false;
           }).then(function (response) {
             console.log(response.data.msg);
             if (response.data.code == 200) {//更改个人资料成功
-              console.log("更新成功");
+              self.$message.success("更新成功");
             } else {
-              console.log("失败");
+              self.$message.error("失败");
             }
           }).catch(function (error) {
             console.log(error);

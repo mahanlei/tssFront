@@ -35,6 +35,9 @@
     <el-menu-item index="6">
       <span slot="title">财务数据</span>
     </el-menu-item>
+    <el-menu-item index="7">
+      <span slot="title">演出订单</span>
+    </el-menu-item>
   </el-menu>
 </el-aside >
       <el-main>
@@ -66,6 +69,19 @@ staId:'',
     fetchData(){
       let self=this;
      self.staId=self.$route.params.id;
+     var url='stadium/checkState';
+       var params=new URLSearchParams();
+       params.append("staId",self.staId);
+         self.$axios({
+           method:'post',
+           url:url,
+           data:params,
+     }).then(function (response) {
+       console.log(response.data.staState);
+           if(response.data.staState==2){
+self.$message.warning("场馆信息修改审批尚未通过！")
+           }
+         })
     },
     handleSelect(key){
       let self=this;
@@ -98,12 +114,27 @@ switch (key){
     break;
   case '5':
     self.$router.push({
+      name:'staInfo',
+      params:{
+        id:self.$route.params.id
+      }
+    })
+    break;
+  case '6':
+    self.$router.push({
       name:'staFinance',
       params:{
         id:self.$route.params.id
       }
     })
     break;
+  case '7':
+    self.$router.push(({
+      name:'staTicketList',
+      params:{
+        id:self.$route.params.id
+      }
+    }))
 }
     },
 

@@ -24,6 +24,10 @@ import offlineTicket from '../components/stadium/OfflineTicket'
 import publishShow from '../components/stadium/PublishShow'
 import offlinePay from '../components/stadium/OfflinePay'
 import staFinance from '../components/stadium/StaFinance'
+import staRegister from  '../components/stadium/StaRegister'
+import staTicketList from '../components/stadium/StaTicketList'
+import manLogin from '../components/manager/ManLogin'
+import manHome from '../components/manager/ManHome'
 Vue.use(Router);
 
 export default new Router({
@@ -110,6 +114,11 @@ export default new Router({
       component:staLogin,
     },
     {
+      path:'/stadium/register',
+      name:'staRegister',
+      component:staRegister,
+    },
+    {
       path:'/stadium/home/:id',
       // name:'staHome',
       component:staHome,
@@ -120,9 +129,21 @@ export default new Router({
         {path:'checkTickets',name:'checkTickets',component:checkTickets},
         {path:'publishShow',name:'publishShow',component:publishShow},
         {path:'staInfo',name:'staInfo',component:staInfo},
-        {path:'staFinance',name:'staFinance',component:staFinance}
+        {path:'staFinance',name:'staFinance',component:staFinance},
+        {path:'staTicketList',name:'staTicketList',component:staTicketList},
 
       ]
+    },
+    //经理相关界面路由
+    {
+      path:'/manager/login',
+      name:'manLogin',
+      component:manLogin,
+    },
+    {
+      path:'/manager/home',
+      name:'manHome',
+      component:manHome,
     }
 
   ]
