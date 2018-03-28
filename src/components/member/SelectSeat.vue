@@ -150,8 +150,9 @@
         });
       },
       selectRow(rowValue) {
-        // console.log(rowValue);
         let self = this;
+        self.optionsColumn=[];
+
         var url = '/seat/getSeatList';
         var params = new URLSearchParams();
         var showId = self.$route.params.showId;
@@ -176,8 +177,9 @@
       },
 
       selectColumn(columnValue) {
-        // console.log(rowValue);
         let self = this;
+        self.optionsColumn=[];
+
         var url = '/seat/getSeatPrice';
         var params = new URLSearchParams();
         var showId = self.$route.params.showId;

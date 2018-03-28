@@ -1,4 +1,5 @@
 <template>
+  <div class="background">
   <el-form :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2"  label-width="100px" class="demo-ruleForm">
     <el-form-item class="item1">
       <span id="title">欢迎注册会员</span>
@@ -29,7 +30,7 @@
     <!--<span id="warning" v-show="ok">{{message}}</span>-->
     <!--</el-form-item>-->
   </el-form>
-
+  </div>
 </template>
 
 <script>
@@ -134,7 +135,7 @@ var nameExp=/^[a-zA-Z][a-zA-Z0-9\u4e00-\u9fa5]{1,10}$/
             if (response.data.code == 200) {//注册成功
             self.$message("请前往邮箱验证");
             } else {
-              console.log("失败");
+              // console.log("失败");
               self.ok = true;
               self.$message.error(response.data.msg);
               // self.message = response.data.msg;

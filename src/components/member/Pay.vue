@@ -136,7 +136,6 @@
                     showId: showId,
                   }
               })
-              vm.$destroy();
             }
           });
 
@@ -260,9 +259,9 @@
               self.disabled3 = true;
             }
             if (self.discountInfo.count4 == 0) {
-              self.disabled3 = true;
+              self.disabled4 = true;
             }
-            console.log(resp2.data);
+            // console.log(resp1.data);
             self.createdTime = resp2.data.createdTime;
             self.loading = false;
             self.totalPayPrice1 = "共" + response.data.totalPayPrice + "元";
