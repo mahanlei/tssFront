@@ -27,7 +27,11 @@ import staFinance from '../components/stadium/StaFinance'
 import staRegister from  '../components/stadium/StaRegister'
 import staTicketList from '../components/stadium/StaTicketList'
 import manLogin from '../components/manager/ManLogin'
-import manHome from '../components/manager/ManHome'
+import manHome from '../components/manager/ManHomePage'
+import manApproval from '../components/manager/ManApproval'
+import manMember from '../components/manager/ManMember'
+import manStadium from '../components/manager/ManStadium'
+import manTicket from '../components/manager/ManTicket'
 Vue.use(Router);
 
 export default new Router({
@@ -142,8 +146,15 @@ export default new Router({
     },
     {
       path:'/manager/home',
-      name:'manHome',
+      // name:'manHome',
       component:manHome,
+      children:[
+        {path:'',name:'manApproval',component:manApproval},
+        {path:'/:id',name:'staShows',component:existingShow},
+        {path:'manMember',name:'manMember',component:manMember},
+        {path:'manStadium',name:'manStadium',component:manStadium},
+        {path:'manTicket',name:'manTicket',component:manTicket}
+      ]
     }
 
   ]

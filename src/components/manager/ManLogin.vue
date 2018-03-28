@@ -6,7 +6,7 @@
        欢迎登录TSS
       </span>
         <el-row>
-          <el-input v-model="account" placeholder="账号" clearable=""></el-input>
+          <el-input v-model="account" placeholder="账号" disabled=""></el-input>
           <el-input v-model="password" placeholder="密码" type="password"></el-input>
           <el-button id="loginButton" type="primary" @click.native.prevent="handleLogin">登录</el-button>
         </el-row>
@@ -20,22 +20,21 @@ export default {
 name: "man-login",
   data(){
   return{
-    account: '',
+    account: '0000000',
     password: '',
   }
 
   },
   methods:{
-
-    handleLogin: function () {
-      const url = 'manager/login';
+    handleLogin() {
       let self = this;
+      var url ='/manLogin';
       var params = new URLSearchParams();
-      var uid = this.account;
-      var passw = this.password;
+      var uid = self.account;
+      var passw = self.password;
       params.append('id', uid);
       params.append('password', passw);
-      this.$axios({
+      self.$axios({
         method: 'post',
         url: url,
         data: params,
@@ -44,11 +43,10 @@ name: "man-login",
           console.log("成功登录");
           self.$message.success("登录成功");
           self.$router.push({
-            name: "manHome",
+            name: "manApproval",
           })
         } else {
           self.$message.error(response.data.msg);
-
         }
       }).catch(function (error) {
         console.log(error);

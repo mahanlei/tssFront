@@ -1,0 +1,25 @@
+.applicationList{
+  margin-left: 20px;
+  margin-bottom: 20px;
+  background-color: white;
+  box-shadow: 2px 2px 3px #BFBFBF;
+}
+.infoDetail {
+  text-align: center;
+  /*margin-left: 10%;*/
+  font-size: 15px;
+  margin-top: 13px;
+}
+.agreeBt{
+  margin-top: 60%;
+  background-color: rgb(219,77,109);
+  color: white;
+  border: 0px;
+  width: 70px;
+  height: 35px;
+  font-size: 13px;
+}
+.appId{
+  font-size: 20px;
+  padding: 20px
+}

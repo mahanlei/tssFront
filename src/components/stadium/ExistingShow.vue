@@ -65,7 +65,8 @@ return{
         for(var i=0;i<response.data.length;i++){
           var showState='';
           if(response.data[i].showState==0){
-            self.showState=true}
+            self.showState=true
+          }
           var obj={
             "showId":response.data[i].showId,
             "picture":response.data[i].picture,
